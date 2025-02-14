@@ -138,7 +138,7 @@ def parse_headers(input_files: list[Path], tmp_dir: Path) -> ExtractedSymbols:
     # Make a new clay.h that combines the provided input files, so that we can add bindings for customized structs
     with open(tmp_dir / 'merged_clay.h', 'w') as f:
         for input_file in input_files:
-            with open(input_file, 'r') as f2:
+            with open(input_file, 'r', encoding="utf-8-sig") as f2:
                 for line in f2:
                     # Ignore includes, as they should be manually included in input_files.
                     if line.startswith("#include"):
